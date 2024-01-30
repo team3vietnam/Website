@@ -17,66 +17,60 @@
     <link href="assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
     <!-- Custom CSS -->
     <link href="dist/css/style.min.css" rel="stylesheet">
-<style>
-    .chat-container {
-text-align: center;
-  max-width: 700px;
-  margin: 100px auto;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
-}
-
-
-.title-container h1 {
-    margin: 0;
-    font-size: 24px;
-    color: #333;
-}
-
-.chat-messages {
-  height: 300px;
-  padding: 30px;
-  overflow-y: scroll;
-}
-
-.chat-message {
-  padding: 10px 20px;
-  border-radius: 20px;
-  margin-bottom: 15px;
-  
-  /* Alternating left/right */
-  &:nth-child(even) {
-    background: #f2f2f2;
-    align-self: flex-end; 
-  }
-}
-
-.chat-input {
-  display: flex;
-  border-top: 1px solid #ddd;
-}
-
-#userInput {
-  flex-grow: 1;
-  padding: 15px 20px;
-  border: none;
-}
-
-#sendButton { 
-  padding: 10px 15px;
-  background: #007bff;
-  color: white;
-  border: none;
-  border-radius: 10px;
-}
-
-select {
-  padding: 10px 15px;
-  border: 1px solid #ddd; 
-  border-radius: 5px;
-  appearance: none;
-}
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+        .chat-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            border: 1px solid #ddd;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+        }
+        .chat-messages {
+            padding: 10px;
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+        .chat-message {
+            margin-bottom: 8px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+        .chat-input {
+            border-top: 1px solid #ddd;
+            padding: 10px;
+        }
+        input[type="text"] {
+            width: 85%;
+            padding: 10px;
+            margin-right: 10px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
 </style>
 </head>
+
 
 <body>
     <div class="preloader">
@@ -169,74 +163,47 @@ select {
                         </li>
                     </ul>
                 </div>
-            </nav>
-        </header>
-        <!-- ============================================================== -->
-        <!-- End Topbar header -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Left Sidebar - style you can find in sidebar.scss  -->
-        <!-- ============================================================== -->
+
         <aside class="left-sidebar" data-sidebarbg="skin6">
             <!-- Sidebar scroll-->
             <div class="scroll-sidebar" data-sidebarbg="skin6">
                 <!-- Sidebar navigation-->
-                    <nav class="sidebar-nav">
+                <nav class="sidebar-nav">
                     <ul id="sidebarnav">
-                    <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="index.html"
-                        ria-expanded="false"><span
-                        class="hide-menu">Dashboard</span></a></li>
-                    <li class="list-divider"></li>
-                    <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="e-com.html"
-                        aria-expanded="false"><span
-                            class="hide-menu">E-commerce</span></a></li>
-                    <li class="list-divider"></li>
-                    <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="chat.html"
-                        aria-expanded="false"><span
-                            class="hide-menu">Chat AI</span></a></li>
-                    <li class="list-divider"></li>
-                    <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="trend.html"
-                        aria-expanded="false"><span
-                            class="hide-menu">Trend (under develop)</span></a></li>
-                    <li class="list-divider"></li>
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="index.html"
+                                aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span
+                                class="hide-menu">Dashboard</span></a></li>
+                        <li class="list-divider"></li>
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="e-com.html"
+                            aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span
+                                class="hide-menu">E-commerce</span></a></li>
+                        <li class="list-divider"></li>
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="chat.html"
+                            aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span
+                                class="hide-menu">Chat AI</span></a></li>
+                        <li class="list-divider"></li>
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="trend.html"
+                            aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span
+                                class="hide-menu">Trend (under develop)</span></a></li>
+                        <li class="list-divider"></li>
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
             </div>
             <!-- End Sidebar scroll-->
         </aside>
-        <!-- ============================================================== -->
-        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Page wrapper  -->
-        <!-- ============================================================== -->
-        <div class="title-container">
-            <h1>Data Analysis with GPT-4</h1>
+        <div class="chat-container">
+            <div class="chat-messages" id="chatMessages"></div>
+            <div class="chat-input">
+                <select id="analysisType">
+                    <option value="analyze_ecommerce">Ecommerce Data</option>
+                    <option value="analyze_officialbrand">Official Brand Data</option>
+                    <option value="analyze_location">Location Data</option>
+                </select>
+                <input type="text" id="userInput" placeholder="Type your question here...">
+                <button id="sendButton">Send</button>
+            </div>
         </div>
-            <div class="chat-container">
-                <div class="chat-messages" id="chatMessages">
-                    </div>
-                        <div class="chat-input">
-                            <form>
-                                <select id="analysisType">
-                                    <option value="analyze_ecommerce">Ecommerce Data</option>
-                                    <option value="analyze_officialbrand">Official Brand Data</option>
-                                    <option value="analyze_location">Location Data</option>
-                                </select>
-                                <input type="text" id="userInput" placeholder="Type your question here...">
-                                <button id="sendButton">Send</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                
-
-                            
-                      <!-- End Panel Chat -->
-                    </div>
-                    </div>                        
-        
 
     <script src="assets/libs/jquery/dist/jquery.min.js"></script>
     <script src="assets/libs/popper.js/dist/umd/popper.min.js"></script>
